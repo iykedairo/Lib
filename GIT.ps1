@@ -1,5 +1,5 @@
 ﻿cd "C:\WEB\WEB"
-cls
+rem cls
 git init
 set GIT_CURL_VERBOSE=1
 git config user.name iykedairo
