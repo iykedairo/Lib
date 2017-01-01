@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Images</title>
+	<script type="text/javascript">
+		var script1 = document.createElement("script");
+		script1.type = "text/javascript";
+		document.getElementsByTagName("head")[0].appendChild(script1);
+		script1.src = "JS.js";
+		script1.defer = false;
+		if (script1 == null){
+			alert(script1.src);
+		}
+
+		var images = document.getElementsByTagName("img");
+		images.src = "C:/Users/USER/Pictures/imported";
+		if(images == null){
+			alert("More work bro");
+		}
+		else {
+			alert("it sorta worked!");
+		}
+
+
+		for(var i = 0; i < images.length; i++ ){
+			
+			
+var divI = document.getElementsByTagName('div')[0];
+
+					divI.innerHTML = images;
+					}
+					
+					
+	</script>
+</head>
+<body>
+<div>Populated</div>
+
+>
+<a href="next.html" onmouseover=
+ "document.images['arrow'].src=
+'images/arrow_on.gif'" onmouseout= "document.images['arrow'].src=
+'images/arrow_off.gif'"><img src= "images/arrow_off.gif" id="arrow" alt="arrow"></a
+
+
+</body>
+</html>

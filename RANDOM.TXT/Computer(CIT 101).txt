@@ -1,0 +1,16 @@
+﻿Computer is an electronic device capable of accepting data
+processing it and giving out useful information from it.
+
+The first general purpose computer was developed 1946 to use
+vacuum tubes as . . . . 
+
+Types:- Super computer,
+	Mainframe computer,
+	Minicomputer, and 
+	Microcomputer
+
+Questions
+
+1: Digital computer uses only 0 and 1 .... yes
+2: Computer developed in the 70's were
+   able to check eight switches every cycle ....yes

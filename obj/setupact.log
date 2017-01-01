@@ -1,0 +1,36 @@
+﻿2016-11-06 14:21:45, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\ee0d711dafb5c1aa1644e5621b18b62f\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-06 14:21:50, Info                  DPX    Started DPX phase: Inventory
+2016-11-06 14:22:32, Info                  DPX    Ended DPX phase: Inventory
+2016-11-06 14:22:32, Info                  DPX    CJob::Resume completed with status: 0x8000000a
+2016-11-06 14:22:45, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\5ad4a6b01fcdf7b3d72ba5eddc5e52f1\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-06 14:30:04, Info                  DPX    Started DPX phase: Inventory
+2016-11-06 14:31:37, Info                  DPX    Ended DPX phase: Inventory
+2016-11-06 14:31:37, Info                  DPX    CJob::Resume completed with status: 0x8000000a
+2016-11-06 14:32:10, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\1885389fa100fbc7594ddd0b45370168\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-06 14:32:16, Info                  DPX    CJob::Resume completed with status: 0x0
+2016-11-06 16:12:27, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\1885389fa100fbc7594ddd0b45370168\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-06 16:12:37, Info                  DPX    CJob::Resume completed with status: 0x0
+2016-11-06 18:01:52, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\1885389fa100fbc7594ddd0b45370168\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-06 18:02:11, Info                  DPX    CJob::Resume completed with status: 0x0
+2016-11-06 18:29:53, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\1885389fa100fbc7594ddd0b45370168\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-06 18:29:58, Info                  DPX    CJob::Resume completed with status: 0x0
+2016-11-06 22:59:46, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\1885389fa100fbc7594ddd0b45370168\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-06 22:59:53, Info                  DPX    CJob::Resume completed with status: 0x0
+2016-11-07 09:49:39, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\1885389fa100fbc7594ddd0b45370168\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-07 09:49:48, Info                  DPX    CJob::Resume completed with status: 0x0
+2016-11-07 10:11:08, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\1885389fa100fbc7594ddd0b45370168\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-07 10:11:14, Info                  DPX    CJob::Resume completed with status: 0x0
+2016-11-09 11:49:11, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\ee0d711dafb5c1aa1644e5621b18b62f\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-09 11:49:16, Info                  DPX    Started DPX phase: Inventory
+2016-11-09 11:50:03, Info                  DPX    Ended DPX phase: Inventory
+2016-11-09 11:50:03, Info                  DPX    CJob::Resume completed with status: 0x8000000a
+2016-11-09 11:50:07, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\1885389fa100fbc7594ddd0b45370168\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-09 11:50:11, Info                  DPX    CJob::Resume completed with status: 0x0
+2016-11-09 11:50:12, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\49f9467b5a6d380e443b88dd58c7d7c3\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-09 11:50:39, Info                  DPX    Started DPX phase: Inventory
+2016-11-09 11:50:54, Info                  DPX    Ended DPX phase: Inventory
+2016-11-09 11:50:54, Info                  DPX    CJob::Resume completed with status: 0x8000000a
+2016-11-09 11:50:55, Info                  DPX    CreateFileW failed, FileName:\\?\C:\WINDOWS\SoftwareDistribution\Download\3024e65860ef9499514536cf8af6704d\$dpx$.tmp\job.xml, Error:0x80070002
+2016-11-09 11:51:02, Info                  DPX    Started DPX phase: Inventory
+2016-11-09 11:51:10, Info                  DPX    Ended DPX phase: Inventory
+2016-11-09 11:51:10, Info                  DPX    CJob::Resume completed with status: 0x8000000a
