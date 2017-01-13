@@ -6,13 +6,45 @@
 //The code is for the purpose of a self-made Library profitable for personal use.
 //Therefore, there should be an expectation for upgrades and time-stamped changes that aims to match the liquxity of the web.
 //EVENT UTILITY 
+
+
+/*
+key presses
+var div = document.getElementById("myDiv");
+EventUtil.addHandler(div, "click", function(event){
+event = EventUtil.getEvent(event);
+var keys = new Array();
+if (event.shiftKey){
+keys.push("shift");
+}
+if (event.ctrlKey){
+keys.push("ctrl");
+}
+if (event.altKey){
+keys.push("alt");
+}
+if (event.metaKey){
+keys.push("meta");
+}
+alert("Keys: " + keys.join(","));
+});
+*/
+
+
 var EventUtil = {
+	CreateRow : function(x){
+		var temp = document.createElement("table");
+		temp.innerHTML = "<tr width=100%> <td width=50%></td> <td width=50%></td></tr>";
+		var RowData = temp.firstChild;
+		x.insertBefore(RowData, x[0]);
+		console.log("Done!");
+	},
 	CreateTable : function(){
 		
 			var fragment = document.createDocumentFragment();
 			var temp = document.createElement("hr");
 temp.innerHTML = 
-"<table id=table width=50% border=1px><tr width=100%><td width=50%><td> <td width=50%></td></tr></table>";
+"<table id=table width=50% border=1px><tr width=100%><td width=50%></td> <td width=50%></td></tr></table>";
 var table = temp.firstChild;
 
 				document.body.insertBefore(table, document.body.children[0]);
@@ -28,20 +60,50 @@ today : (function(){
 "use strict";
  var getNow = function(){
 var DateToday = new Date();
- 	return DateToday;
+ 	return DateToday;//.toUTCString();
  }();
-var dateSpan = document.createElement("small");
-dateSpan.id = "dateid";
-dateSpan.class = "dateclass";
-var footer = document.getElementById("footer");
-footer.insertBefore(dateSpan, footer[1]);
-dateSpan.innerHTML = getNow;
-dateSpan.style.cssText = "color:#5d66cc; font-style:oblique; text-align:center;font-style: Impact;";
+var dateDiv = document.createElement("h3");
+var dateDivPos = document.body.appendChild(dateDiv);
+dateDiv.innerHTML = getNow;
+dateDiv.style.cssText = "background: #000000; color: #ebebeb; text-align:center;font-style: Impact;font-weight:bold;font-size:100%;border-radius:4%;width:20%;position:absolute;right:0;top:0";
 //call it in your document script thus:
 //EventUtil.today();
 //works with both inline and external scripts same way.
+}),
+
+clone : (function(object){
+	if (object === null || typeof object !== "object" || "isActiveClone" in object) {
+		return object;
+		if (object instanceof Date) {
+			var temp = new object.constructor();
+		}
+		else{
+			var temp = object.constructor();
+		}
+		for (var key in object) {
+			if (Object.prototype.hasOwnProperty.call(object, key)) {
+				object["isActiveClone"] = null;
+				temp[key] = clone(object[key]);
+				delete object["isActiveClone"];
+			}
+		}
+		return temp;
+	}
 
 }),
+
+ prepend : (function(tag, elem){
+		var x = SAPI.tag(tag)[0];
+		//select a tag where to inserbefore
+		x.insertBefore(elem, x.children[0]);
+		//x.insertBefore(elem, x.firstChild) and it'd work same way
+		//put elem @ the 0-th position of the selected tag
+	}),
+
+ appendTo : (function(x, y){// i.e newNode, refferenceNode
+	y.parentNode.inserbefore(x, y.nextSibling);
+		 }),
+
 	selectScript: function(){
 	var scripts = 10;
 	var sources = arguments;

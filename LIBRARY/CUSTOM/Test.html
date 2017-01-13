@@ -1,9 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 	<title>Testing Script Loading</title>
-	<script type="text/javascript" src="LoadingScriptsMethod.js"></script>
+	<script type="text/javascript" src="ProJS.js"></script>
+	<!-- <script type="text/javascript" src="NEW.js"></script> -->
 </head>
 <body>
+
+
+
+<script type="text/javascript">
+
+(function(){
+function SAPI(){
+	
+
+}
+SAPI.prototype = {
+	// body...
+	args : arguments,
+
+	qs : function(args){
+		return (document.querySelector) ? document.querySelector(args[0]) : document.all(args[0]);
+	},
+
+	tagName : function(){
+		return document.getElementsByTagName(args)
+	}
+
+};
+})();
+</script>
 </body>
 </html>

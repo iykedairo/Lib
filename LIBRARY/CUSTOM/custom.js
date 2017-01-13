@@ -1,13 +1,85 @@
 
-alert("loaded!!!!!");// Instead of alert, UserAgent on the screen corner
+// Instead of alert, UserAgent on the screen corner
 //All custom code will be here.
 //These custom codes will be  called and used natively in the scripts pages.
 //These codes are custom because they are made up of different fragments of self-made re-usable chunks of code
 //The code is for the purpose of a self-made Library profitable for personal use.
-//Therefore, there should be an expectation for upgrades and time-stamped changes that aims to match the liquidity of the web.
+//Therefore, there should be an expectation for upgrades and time-stamped changes that aims to match the liquxity of the web.
 //EVENT UTILITY 
-var EventUtil = {
-	
+
+
+/*
+key presses
+var div = document.getElementById("myDiv");
+EventUtil.addHandler(div, "click", function(event){
+event = EventUtil.getEvent(event);
+var keys = new Array();
+if (event.shiftKey){
+keys.push("shift");
+}
+if (event.ctrlKey){
+keys.push("ctrl");
+}
+if (event.altKey){
+keys.push("alt");
+}
+if (event.metaKey){
+keys.push("meta");
+}
+alert("Keys: " + keys.join(","));
+});
+*/
+
+
+
+
+/*SELECTORS API
+A Cross Browser Selector
+*/
+ var SAPI = {
+
+
+
+	//Query Selectors
+qs: (function(x){
+	if (document.querySelector) {
+return document.querySelector(x);
+	}
+	else if(document.querySelectorAll){
+		return document.querySelectorAll(x);
+	}
+}),
+
+//Element By id
+id: (function(x){
+	return document.getElementById(x);
+}),
+
+//Elements By Tagname
+tag: (function(a){
+	return document.getElementsByTagName(a);
+}),
+//OTHERS {getElementsByClass, etc	}
+names : (function(x){
+	return document.getElementsByName(x);
+}),
+class : (function(x){
+	return document.getElementsByClass(x);
+}),
+
+prepend : (function(tag, elem){
+		var x = SAPI.tag(tag)[0];
+		//select a tag where to inserbefore
+		x.insertBefore(elem, x.children[0]);
+		//x.insertBefore(elem, x.firstChild) and it'd work same way
+		//put elem @ the 0-th position of the selected tag
+		return this;
+	}),
+
+ appendTo : (function(x, y){// i.e newNode, refferenceNode
+	y.parentNode.inserbefore(x, y.nextSibling);
+		 }),
+
 	selectScript: function(){
 	var scripts = 10;
 	var sources = arguments;
@@ -19,7 +91,51 @@ var EventUtil = {
 	j.src = "../" + sources[i];
 	var poSItion = document.head.appendChild(j);
 			}
-		},
+		}
+
+//END   END   END   END   END   END   END   END   END   END   END   END
+
+
+};
+
+
+var EventUtil = {
+//Instead of an alert, full date at the page's end
+today : (function(){
+"use strict";
+ var getNow = function(){
+var DateToday = new Date();
+ 	return DateToday;
+ }();
+var dateDiv = document.createElement("h3");
+var dateDivPos = document.body.appendChild(dateDiv);
+dateDiv.innerHTML = getNow;
+dateDiv.style.cssText = "background: #000000; color: #ebebeb; text-align:center;font-style: Impact;font-weight:bold;font-size:100%;border-radius:4%;width:20%;position:absolute;right:0;top:0";
+//call it in your document script thus:
+//EventUtil.today();
+//works with both inline and external scripts same way.
+}),
+
+clone : (function(object){
+	if (object === null || typeof object !== "object" || "isActiveClone" in object) {
+		return object;
+		if (object instanceof Date) {
+			var temp = new object.constructor();
+		}
+		else{
+			var temp = object.constructor();
+		}
+		for (var key in object) {
+			if (Object.prototype.hasOwnProperty.call(object, key)) {
+				object["isActiveClone"] = null;
+				temp[key] = clone(object[key]);
+				delete object["isActiveClone"];
+			}
+		}
+		return temp;
+	}
+
+}),
 	
 	addHandler: function(element, type, handler){
 if (element.addEventListener){
@@ -100,43 +216,13 @@ element.innerText = text;
 getInnerText: function(element){
 return (typeof element.textContent == "string") ?
 element.textContent : element.innerText;
-},
-//alert(getInnerText(div)); //"Hello world!"
-
-
-/*SELECTORS API
-A Cross Browser Selector
-*/
-SAPI: {
-
-	//Query Selectors
-qS: function(id){
-	if (document.querySelector) {
-return document.querySelector(id);
-	}
-	else if(document.querySelectorAll){
-		return document.querySelectorAll(id);
-	}
-},
-
-//Element By id
-idS: function(id){
-	return document.getElementById(id);
-},
-
-//Elements By Tagname
-tagS: function(a){
-	return document.getElementsByTagName(a);
 }
-//OTHERS {getElementsByClass, etc	}
-},
-
-//END   END   END   END   END   END   END   END   END   END   END   END
-alert : (function(){return alert("Loaded right!!!!!");})//CUSTOM ALERT EventUtil.alert(); as below
-//Instead of an alert, full date at the page's end
+//alert(getInnerText(div)); //"Hello world!"
 
 };
 
-EventUtil.alert();
+
+
+
 
 

@@ -1,4 +1,4 @@
-h3{
+k{
 width:15%;
 background:#654;
 position:absolute;
@@ -6,4 +6,9 @@ right:5%;
 top:5%;
 color:#333
 
+}
+
+#dateid{
+	color:#5d66cc; 
+	font-style:oblique; 
 }

@@ -1,4 +1,5 @@
-!function(){//SAPI denotes Selector API. 
+!function(){
+	//SAPI denotes Selector API. 
 				//qs denotes querySelector(id)
 				//id denotes document.getElementById(id)
 				EventUtil.today();
@@ -10,13 +11,14 @@
 			var submit = SAPI.qs("#submit");
 			var item = SAPI.qs("#item");
 			var reset = SAPI.qs("#reset");
-			var value = SAPI.qs("#value");
-				item.focus();
+			var value = SAPI.qs("#value");	
+			var Results = SAPI.qs("#Results");
+			item.focus();
 			total.innerHTML = "Total: " + Total;
 
 			// Event CALLS
 			EventUtil.addHandler(submit, "click", Foo);
-		    EventUtil.addHandler(document, "keypress", keypresses);
+		    EventUtil.addHandler(document, "keydown", EnterKeyPress);
 			EventUtil.addHandler(reset, "click", Clean);
 			/*EventUtil.addHandler(window, "beforeunload", function(){
 				alert("Reloaded Right!");
@@ -46,22 +48,23 @@
 	      var clear = (function(){
 				Total = 0;
 			total.innerHTML = "Total: " + Total;
-			resultsPane.innerHTML = " ";
+			Results.innerHTML = " ";
+			prompt("You must write something now.")
 			});
 
-			return [Clear(), clear()];
+			return [clear(), Clear()];
 
 	
 		}
 		function Clear(){
-			item.value = "";
+			item.value = " ";
 				item.placeholder = "New item";
-				value.value = "";
+				value.value = " ";
 				value.placeholder = "The vlaue";
 				item.focus();
 		}
 
-		function Foo(){
+		function Food(){
 				var p = document.createElement("p");
 				p.name = "dynamic paragraphs";
 				 var dynamicps = SAPI.names("dynamic paragraphs");
@@ -78,6 +81,34 @@
 				
 
 		}
+		
+		function Foo(){
+			var table = new Table(Results);
+				table.Cell.innerHTML = item.value;
+				table.anotherCell.innerHTML = value.value;
+				Total += parseFloat(value.value, 10); //The elusive counter engine
+				console.log(item.value + ": " + Total);
+				total.innerHTML = "Total: " + Total; 
+				var reset = Clear();
+				console.log("Success!");
+
+
+
+		}
+		
+		function EnterKeyPress(event){
+		event = event || window.event;
+		if(event.keyCode == 13){
+		console.log("Session submitted. . .");
+		if( !value.value || !item.value){
+			console.log("Please supply the values.");
+		}
+
+		else { 
+			Foo();
+			console.log("Session values computed.");
+			}
+	}}
 
 	
 
