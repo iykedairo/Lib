@@ -92,7 +92,7 @@ age++;
 }
 return {
 name: "Nicholas",
-u getAge: getAge,
+getAge: getAge,
 growOlder: growOlder
 };
 }());
@@ -112,8 +112,7 @@ this.name = name;
 u this.getAge = function() {
 return age;
 };
-www.it-ebooks.infoObject Patterns 83
-v this.growOlder = function() {
+ this.growOlder = function() {
 age++;
 };
 }
@@ -135,8 +134,8 @@ on the prototype), you can use a hybrid approach that looks like the module patt
 
 var Person = (function() {
 // everyone shares the same age
-u var age = 25;
-v function InnerPerson(name) {
+var age = 25;
+function InnerPerson(name) {
 this.name = name;
 }
 InnerPerson.prototype.getAge = function() {
@@ -367,9 +366,9 @@ If you want accessor properties to be copied over as accessor properties, you ne
 */
 
 function mixin(receiver, supplier) {
-u Object.keys(supplier).forEach(function(property) {
+Object.keys(supplier).forEach(function(property) {
 var descriptor = Object.getOwnPropertyDescriptor(supplier, property);
-v Object.defineProperty(receiver, property, descriptor);
+Object.defineProperty(receiver, property, descriptor);
 });
 return receiver;
 }
