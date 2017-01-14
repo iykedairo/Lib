@@ -73,7 +73,7 @@ prepend : (function(tag, elem){
 		x.insertBefore(elem, x.children[0]);
 		//x.insertBefore(elem, x.firstChild) and it'd work same way
 		//put elem @ the 0-th position of the selected tag
-		return this;
+		return x;
 	}),
 
  appendTo : (function(x, y){// i.e newNode, refferenceNode
