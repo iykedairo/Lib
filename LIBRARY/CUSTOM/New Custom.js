@@ -6,16 +6,228 @@
 //Therefore, there should be an expectation for upgrades and time-stamped changes that aims to match the liquxity of the web.
 //EVENT UTILITY 
 
+/* 
+mozilla
+parser=new DOMParser();
+htmlDoc=parser.parseFromString(txt, "text/html");
+//Do whatever you want with htmlDoc.getElementsByTagName('a');
+
+Chrome
+parser=new DOMParser();
+htmlDoc=parser.parseFromString(txt, "text/xml");
+//Do whatever you want with htmlDoc.getElementsByTagName('a');
+
+
+The fastest way to parse HTML in Chrome and Firefox is Range#createContextualFragment:
+
+var range = document.createRange();
+range.selectNode(document.body); // required in Safari
+var fragment = range.createContextualFragment('<h1>html...</h1>');
+var firstNode = fragment.firstChild;
+
+
+
+
+The following function parseHTML will return either :
+
+    a Document when your file starts with a doctype.
+
+    a DocumentFragment when your file doesn't start with a doctype.
+
+The code :
+
+function parseHTML(markup) {
+    if (markup.toLowerCase().trim().indexOf('<!doctype') === 0) {
+        var doc = document.implementation.createHTMLDocument("");
+        doc.documentElement.innerHTML = markup;
+        return doc;
+    } else if ('content' in document.createElement('template')) {
+       // Template tag exists!
+       var el = document.createElement('template');
+       el.innerHTML = markup;
+       return el.content;
+    } else {
+       // Template tag doesn't exist!
+       var docfrag = document.createDocumentFragment();
+       var el = document.createElement('body');
+       el.innerHTML = markup;
+       for (i = 0; 0 < el.childNodes.length;) {
+           docfrag.appendChild(el.childNodes[i]);
+       }
+       return docfrag;
+    }
+}
+
+How to use :
+
+var links = parseHTML('<!doctype html><html><head></head><body><a>Link 1</a><a>Link 2</a></body></html>').getElementsByTagName('a');
+
+function parseHTML(html) {
+    var t = document.createElement('template');
+    t.innerHTML = html;
+    return t.content.cloneNode(true);
+}
+
+var documentFragment = parseHTML('<td>Test</td>');
+
+
+jQuery's method
+
+/** 
+ * jQuery 2.1.3's parseHTML (without scripts options).
+ * Unlike jQuery, this returns a DocumentFragment, which is more convenient to insert into DOM.
+ * MIT license.
+ * 
+ * If you only support Edge 13+ then try this:
+    function parseHTML(html, context) {
+        var t = (context || document).createElement('template');
+            t.innerHTML = html;
+        return t.content.cloneNode(true);
+    }
+ 
+var parseHTML = (function() {
+    var rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
+        rtagName = /<([\w:]+)/,
+        rhtml = /<|&#?\w+;/,
+        // We have to close these tags to support XHTML (#13200)
+        wrapMap = {
+            // Support: IE9
+            option: [1, "<select multiple='multiple'>", "</select>"],
+
+            thead: [1, "<table>", "</table>"],
+            col: [2, "<table><colgroup>", "</colgroup></table>"],
+            tr: [2, "<table><tbody>", "</tbody></table>"],
+            td: [3, "<table><tbody><tr>", "</tr></tbody></table>"],
+
+            _default: [0, "", ""]
+        };
+        
+    /**
+     * @param {String} elem A string containing html
+     * @param {Document} context
+     
+    return function parseHTML(elem, context) {
+        context = context || document;
+
+        var tmp, tag, wrap, j,
+            fragment = context.createDocumentFragment();
+
+        if (!rhtml.test(elem)) {
+            fragment.appendChild(context.createTextNode(elem));
+
+            // Convert html into DOM nodes
+        } else {
+            tmp = fragment.appendChild(context.createElement("div"));
+
+            // Deserialize a standard representation
+            tag = (rtagName.exec(elem) || ["", ""])[1].toLowerCase();
+            wrap = wrapMap[tag] || wrapMap._default;
+            tmp.innerHTML = wrap[1] + elem.replace(rxhtmlTag, "<$1></$2>") + wrap[2];
+
+            // Descend through wrappers to the right content
+            j = wrap[0];
+            while (j--) {
+                tmp = tmp.lastChild;
+            }
+
+            // Remove wrappers and append created nodes to fragment
+            fragment.removeChild(fragment.firstChild);
+            while (tmp.firstChild) {
+                fragment.appendChild(tmp.firstChild);
+            }
+        }
+
+        return fragment;
+    };
+}());
+
+
+
+
+d.className += ' additionalClass'; //note the space
+
+var element = document.getElementById("div1");
+element.classList.add("otherclass");
+
+
+
+Class
+
+if (document.body.classList.contains('thatClass')) {
+    // do some stuff
+}
+
+Other uses of classList:
+
+document.body.classList.add('thisClass');
+// $('body').addClass('thisClass');
+
+document.body.classList.remove('thatClass');
+// $('body').removeClass('thatClass');
+
+document.body.classList.toggle('anotherClass');
+// $('body').toggleClass('anotherClass');
+
+Browser Support:
+
+    Chrome 8.0
+    Firefox 3.6
+    IE 10
+    Opera 11.50
+    Safari 5.1
+
+ */
+
 
 ;(function(window, element, undefined){
 	window, document, undefined;
 		var body = document.body || document.createElement("body"), html = document.documentElement, head = document.head,
 		 url = document.URL, BaseURI = document.baseURI, URI = document.documentURI, element = typeof document.nodeType === 2;
 
+var SAPI = SAPI || {}, PT = PT || {};
 
-
-	var PT = PT || {
+	SAPI = PT = PT.prototype =  {
 		page : true,
+		
+// Production steps of ECMA-262, Edition 5, 15.4.4.14
+// Reference: http://es5.github.io/#x15.4.4.14
+indexOf : function(obj, searchElement, fromIndex){
+	obj = Function(obj);
+		if (!Array.prototype.indexOf) {
+			Array.prototype.indexOf = function(searchElement, fromIndex) {
+
+			var k;
+			if (this == null) {
+			  throw new TypeError('"this" is null or not defined');
+			}
+			var o = Object(this);
+			var len = o.length >>> 0;
+
+			if (len === 0) {
+			  return -1;
+			}
+			var n = fromIndex | 0;
+
+			if (n >= len) {
+			  return -1;
+			}
+			k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+			while (k < len) {
+			  if (k in o && o[k] === searchElement) {
+				return k;
+			  }
+			  k++;
+			}
+			return -1;
+		  };
+		  
+		  return obj.apply(Array.prototype.indexOf(searchElement, fromIndex));
+		  
+		}
+		
+		return obj.apply(Array.prototype.indexOf(searchElement, fromIndex));
+},
+				
 		log : function(){
 			console.log("window:"+window+" document:"+document+" html:"+html+" body"+body+" head"+head+" url :"+url);
 			console.log("BaseURI :"+BaseURI+" :URI: "+URI+" element :"+element);
@@ -158,17 +370,9 @@ Keypress : function(evt) {
                 break;
 
         }
-    }
-		
-		
-	};
+    },
 
-	Function.prototype.FN = function(fn){
-		PT.mixin(this.prototype, fn)
-		return this;
-	};
 
-var SAPI = PT.SAPI = PT.prototype = {
 
 	Create : function(element){
 		element	= document.createElement(element);
@@ -280,16 +484,49 @@ className : function(className){
 		return document.getElementsByClassName(className);
 	},
 
+addClass : function(element, name){
+	//return element.className += " " + name;
+	//element.classList.add("otherclass");
+	return SAPI.setAttr(element, "class", name);
+
+},
+
+removeClass : function(element, name){
+	return element.classList.remove(name);
+},
+
+hasClass : function(element, name){
+	return (element.classList.contains(name)) ? true : false;
+},
+
+toggleClass : function(element, className){
+		if(element.classList.contains(className)){
+		this.removeClass(element, className);
+		console.log("class "+ className+" has been removed");
+		}
+		else{
+		this.addClass(element, className);
+		console.log("class "+ className+" has been added");
+		}
+		
+},
+
+
+
 ElementName : function(elementName){
 		return document.getElementsByName(elementName);
 	},
 
 setAttr : function(e, attr, value){
-		return e.setAttribute(attr, value);
+	var plusAttr = e.getAttribute(attr);
+	plusAttr = plusAttr + " " + value + " ";
+		return e.setAttribute(attr, plusAttr);
 	},
 
-getAttr : function(element, attr){         var a = element.getAttribute(attr);
-return this;     },
+getAttr : function(element, attr){ 
+			var a = element.getAttribute(attr);
+		return a;     
+		},
 
 hasAttr : function(element, attr){
 		return element.hasAttribute(attr);
@@ -399,8 +636,7 @@ nthChild : function(parent, pos, childPos) {
 };
 
 
-
-var EventUtil = PT.EventUtil = {
+PT.EventUtil = {
 	addHandler: function(element, type, handler){
 if (element.addEventListener){
 element.addEventListener(type, handler, false);
@@ -461,11 +697,16 @@ return event.fromElement;
 return null;
 }
 }
-
-
 //more code here
-
 };
+
+
+
+	Function.prototype.FN = function(fn){
+		PT.mixin(this.prototype, fn)
+		return this;
+	};
+
 //console.log(PT.SAPI.tagName());
 //PT.log();
 window.SAPI = SAPI;

@@ -11,3 +11,25 @@ document.removeChild(element)	Remove an HTML element
 document.appendChild(element)	Add an HTML element
 document.replaceChild(element)	Replace an HTML element
 document.write(text)	Write into the HTML output stream
+
+
+Array.prototype.indexOf()
+
+var a = [2, 9, 9]; 
+a.indexOf(2); // 0 
+a.indexOf(7); // -1
+
+if (a.indexOf(7) === -1) {
+  // element doesn't exist in array
+}
+
+arr.indexOf(searchElement)
+arr.indexOf(searchElement, fromIndex)
+
+var array = [2, 9, 9];
+array.indexOf(2);     // 0
+array.indexOf(7);     // -1
+array.indexOf(9, 2);  // 2
+array.indexOf(2, -1); // -1
+array.indexOf(2, -3); // 0
+

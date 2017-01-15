@@ -20,10 +20,10 @@
 <h1 id="h1" class="h">Heading One</h1>
 <h2 id="h2" class="h">Heading Two</h2>
 <h3 id="h3" class="h">Heading Three</h3>
-
+<div class="someclass">
+    <img id="image1" class="First" name="image1" />
+</div>
 </article>
-
-
 <script type="text/javascript">
 
 var lore = window.SAPI.qs(".lore");
@@ -37,6 +37,18 @@ var h2 = SAPI.qs("#h2");
 var div = SAPI.tagName("h1")[0];
 var h7 = new Object();
 PT.log(PT.isAbsent(h7));
+</script>
+<script>
+var at = SAPI.qs("div > img");
+
+at.className += " Anotherclass";
+SAPI.addClass(at, "second");
+SAPI.addClass(at, "third");
+SAPI.addClass(at, "fourth");
+alert(SAPI.hasClass(at, "second"));
+//at.className += " Anotherclass";
+at.textContent = "<h1>WE OWN THE PLACE!</h1>"
+
 </script>
 </body>
 </html>
